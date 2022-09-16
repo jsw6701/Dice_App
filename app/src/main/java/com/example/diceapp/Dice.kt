@@ -1,4 +1,6 @@
 package com.example.diceapp
+//전역 변수. global variable 선언
+var num:Int = 0
 
 fun main(){
     var a:Int = 2
@@ -10,6 +12,7 @@ fun main(){
     var name:String = "Tom"
     var name2:String? // null 값을 허용하는 타입
 
+    num++
     //name = null
     name2 = null
     //자바 언어에서는 발생하는 문제가 NPE(NullPointerException) 오브젝트 변수인데 오브젝트가 실제 가르키는 오브젝트가 없다.
@@ -30,16 +33,31 @@ fun main(){
 
     roll()
 
-    
+    //roll2(12) //인자값을 넘기면서 함수 호출. 인자값은 함수의 매개변수로 전달
+    val number2 = roll2(8)
+
+    println("Dice number2: $number2 --> $num")
+
 }
 
 fun roll(){
-
+    var num:Int = 3 //지역변수
+    num++ //전역변수와 지역변수의 이름이 동일하면 지역변수를 사용한다. 전역변수는 가려진다
     //주사위 던져서 나오는 숫자 하나
     var number:Int = 0;
     number = (1..6).random() //1..6 --> 1~6범위
     println("Dice number: $number")
 }
 
+//반환이 있는 함수 정의. 매개변수 리스트 뒤에 반환 타입을 지정.
+/*
 
-class My
+fun roll2(sides:Int):Int{ //매개변수 정의
+    return (1..sides).random()
+}*/
+
+fun roll2(sides:Int)/*:Int*/ = (1..sides).random() //함수의 내용이 한줄일떄 이렇게 만들 수 있음 return 제거 Int가 나온다고 했으니 return타입 생략가능
+
+class MyDice(){
+
+}
